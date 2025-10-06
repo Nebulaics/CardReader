@@ -3,7 +3,6 @@
 #include <QTextStream>
 #include <QStandardPaths>
 #include <QFile>
-#include <iostream>
 
 CardParser::CardParser(QObject *parent) : QObject(parent) {
 
