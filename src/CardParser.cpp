@@ -1,4 +1,4 @@
-#include "include/CardParser.h"
+#include "CardParser.h"
 #include <QDebug>
 #include <QTextStream>
 #include <QStandardPaths>
