@@ -16,22 +16,24 @@ set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
     FORCE
 )
 
-find_package(Qt6 6.4.2 REQUIRED COMPONENTS Core Gui Widgets Qml Quick QuickTimeline ShaderTools Sql)
+find_package(Qt6 6.4.2 REQUIRED COMPONENTS Core Gui Widgets Qml Quick QuickTimeline ShaderTools Sql SerialPort)
 qt_standard_project_setup(REQUIRES 6.4.2)
 
 add_library(core STATIC
     ${CMAKE_CURRENT_LIST_DIR}/include/CardParser.h
     ${CMAKE_CURRENT_LIST_DIR}/include/BankDatabase.h
+    ${CMAKE_CURRENT_LIST_DIR}/include/QSerialConnection.h
 
     ${CMAKE_CURRENT_LIST_DIR}/src/CardParser.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/BankDatabase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/QSerialConnection.cpp
 )
 
 target_link_libraries(core PUBLIC Qt6::Core Qt6::Concurrent)
 
 
 qt_add_executable(${CMAKE_PROJECT_NAME} App/main.cpp)
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE core Qt6::Sql)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE core Qt6::Sql Qt6::SerialPort)
 
 target_include_directories(core
   PUBLIC
