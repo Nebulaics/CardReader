@@ -21,9 +21,18 @@ public:
     bool writeData(const QByteArray &data);
 
 signals:
+    void dataReceived(const QByteArray &data);
+    void portError(const QString &errorMessage);
+    void portOpened(const QString &portName);
+    void portClosed();
 
+
+private slots:
+    void handleReadyRead();
+    void handleError(QSerialPort::SerialPortError error);
 
 private:
+    QSerialPort *serial;
 };
 
 #endif // QSERIALCONNECTION_H
