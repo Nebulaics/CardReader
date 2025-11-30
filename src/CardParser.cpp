@@ -1,9 +1,8 @@
-#include "include/CardParser.h"
+#include "CardParser.h"
 #include <QDebug>
 #include <QTextStream>
 #include <QStandardPaths>
 #include <QFile>
-#include <iostream>
 
 CardParser::CardParser(QObject *parent) : QObject(parent) {
 
